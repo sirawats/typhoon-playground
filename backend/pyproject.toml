@@ -1,0 +1,38 @@
+[project]
+name = "typhoon-api"
+version = "0.1.0"
+description = """A modern, opinionated FastAPI template for building Python web applications with best practices and a well-structured codebase.
+                 It leverages a cutting-edge stack for optimal performance, maintainability, and developer productivity, 
+                 making it an ideal starting point for your next project."""
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.6",
+    "sqlalchemy>=2.0.36",
+    "asyncpg>=0.30.0",
+    "alembic>=1.14.0",
+    "python-dotenv>=1.0.1",
+    "pydantic-settings>=2.7.0",
+    "greenlet>=3.1.1",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "redis>=5.2.1",
+    "langchain-openai>=0.2.14",
+    "langchain>=0.3.13",
+    "langchain-community>=0.3.13",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8.4",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.0",
+    "pytest-cov>=6.0.0",
+    "aiosqlite>=0.20.0",
+]
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"

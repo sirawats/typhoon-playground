@@ -1,0 +1,35 @@
+# IDE-specific files
+.vscode
+
+# Postgres
+postgres_data
+
+# Virtual environment
+.venv
+
+# Environment variables
+.env
+
+# MacOS files
+.DS_Store
+
+# Python cache files
+__pycache__
+
+# Database files
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Compiled Python files
+*.pyc
+
+# Package directories
+dist/
+build/
+*.egg-info/

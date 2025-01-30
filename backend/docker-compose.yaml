@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:17
+    volumes:
+      - ../postgres_data:/var/lib/postgresql/data
+    env_file:
+      - path: .env
+        required: true
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - .env:/app/.env
+    env_file:
+      - path: .env
+        required: true
+    depends_on:
+      - postgres
+      - redis
+
+    # Uncomment to run in dev mode
+    # command: ["/app/.venv/bin/fastapi", "dev", "src/app/main.py", "--port", "8000", "--host", "0.0.0.0"]
+
+volumes:
+  postgres_data:
